@@ -8,7 +8,7 @@ import (
 )
 
 func (h *HumanEncoder) AppendBool(b bool) {
-	h.writeStringf("%T", b)
+	h.writeStringf("%t", b)
 }
 
 func (h *HumanEncoder) AppendByteString(bytes []byte) {

@@ -115,6 +115,7 @@ func (h *HumanEncoder) AddByteString(key string, value []byte) {
 func (h *HumanEncoder) AddBool(key string, value bool) {
 	h.addKey(key)
 	h.AppendBool(value)
+	_ = h.buf.WriteByte('\n')
 }
 
 func (h *HumanEncoder) AddComplex128(key string, value complex128) {
