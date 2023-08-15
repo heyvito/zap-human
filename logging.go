@@ -308,6 +308,9 @@ func (h *HumanEncoder) EncodeEntry(ent zapcore.Entry, fields []zapcore.Field) (*
 	final.AppendString(ent.Message)
 	final.writeString("\n")
 
+	if h.buf.Len() > 0 {
+		_, _ = final.buf.Write(h.buf.Bytes())
+	}
 	addFields(final, fields)
 	if ent.Stack != "" && final.StacktraceKey != "" {
 		final.AddString(final.StacktraceKey, ent.Stack)
